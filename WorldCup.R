@@ -8,8 +8,18 @@ gamesId <- games$id
 team1HumanReadable <- countries$title[games$team1_id]
 team2HumanReadable <- countries$title[games$team2_id]
 
-humanReadable <- data.frame(gamesId, team1HumanReadable, team2HumanReadable, games$score1, games$score2, games$winner)
+humanReadable <- data.frame(gamesId, team1HumanReadable, team2HumanReadable, games$score1, games$score2, games$winner, games$play_at, games$play_at_v2, games$play_at_v3)
 humanReadable <- humanReadable[which(!is.na(humanReadable$games.winner)),]
+
+# Returns only years from a vector of dates
+getYearsFromDates <- function(dates) {
+    return (substring(dates, 1, 4))
+}
+
+# Gets number of World Cup tournaments appearance from the specified set of games
+getNbAttendances <- function (games) {
+    return(length(unique(getYearsFromDates(games$games.play_at))))
+}
 
 # Gets number of goals scored for the specified country
 getGoalsFor <- function(countryGames, country) {
@@ -36,12 +46,14 @@ getNbGamesPlayed <- function(gamesPlayed) {
 }
 
 # A vector containing data names
-statsNames <- c("Country", "Number of games played", "Goals for", "Goals against", "Goals for per game", "Goals against per game", "Wins", "Draws", "Losses")
+statsNames <- c("Country", "Appearances", "Number of games played", "Goals for", "Goals against", "Goals for per game", "Goals against per game", "Wins", "Draws", "Losses")
 
 # Returns stats for the specified country
 getStats <- function(country) {
     # Gets specific France data
     gamesData <- getGamesFor(country)
+    # Gets appearances
+    appearances <- getNbAttendances(gamesData)
     # Gets number of games played
     nbGamesPlayed <- getNbGamesPlayed(gamesData)
     # Gets games played as HOME team
@@ -59,7 +71,7 @@ getStats <- function(country) {
     nbGamesPlayedFrance <- nbGamesPlayed
     goalsPerGame <- round(goals / nbGamesPlayed, 2)
     # Builds a data frame containing all stats
-    stats <- data.frame(country, nbGamesPlayed, goals[1], goals[2], goalsPerGame[1], goalsPerGame[2], wins, draws, losses)
+    stats <- data.frame(country, appearances, nbGamesPlayed, goals[1], goals[2], goalsPerGame[1], goalsPerGame[2], wins, draws, losses)
     names(stats) <- statsNames
     
     return(stats)

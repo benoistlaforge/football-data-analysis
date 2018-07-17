@@ -13,16 +13,14 @@ source("WorldCup.R")
 country <- "France"
 
 statsFr <- getStats(country)
-
-
-
 ```
 
-#### Number of games played: `r I(statsFr[1,2])`
-#### Goals for: `r I(statsFr[1,3])`
-#### Goals for/game: `r I(statsFr[1,5])`
-#### Goals against: `r I(statsFr[1,4])`
-#### Goals against/game: `r I(statsFr[1,6])`
+#### Appearances: `r I(statsFr$Appearances)`
+#### Number of games played: `r I(statsFr$`Number of games played`)`
+#### Goals for: `r I(statsFr$`Goals for`)`
+#### Goals for/game: `r I(statsFr`Goals for per game`)`
+#### Goals against: `r I(statsFr`Goals against`)`
+#### Goals against/game: `r I(statsFr`Goals against per game`)`
 
 # Brazil
 
