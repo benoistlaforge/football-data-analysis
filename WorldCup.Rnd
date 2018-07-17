@@ -1,0 +1,9 @@
+---
+title: "World Cup data analysis"
+output: html_notebook
+---
+
+```{r}
+source("WorldCup.R")
+```
+

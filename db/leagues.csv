@@ -1,0 +1,17 @@
+id,key,title,country_id,club,created_at,updated_at
+1,world,World Cup,,f,2018-07-17 10:56:55.910331,2018-07-17 10:56:55.910331
+2,world.quali.europe,World Cup Quali Europe,,f,2018-07-17 10:56:55.911643,2018-07-17 10:56:55.911643
+3,world.quali.northamerica,World Cup Quali North/Central America and Caribbean,,f,2018-07-17 10:56:55.912548,2018-07-17 10:56:55.912548
+4,world.quali.southamerica,World Cup Quali South America,,f,2018-07-17 10:56:55.913544,2018-07-17 10:56:55.913544
+5,world.quali.africa,World Cup Quali Africa,,f,2018-07-17 10:56:55.914465,2018-07-17 10:56:55.914465
+6,world.quali.asia,World Cup Quali Asia (w/ Australia),,f,2018-07-17 10:56:55.915510,2018-07-17 10:56:55.915510
+7,world.quali.pacific,World Cup Quali South Pacific,,f,2018-07-17 10:56:55.916407,2018-07-17 10:56:55.916407
+8,world.quali.playoffs,World Cup Quali Intercontinental Playoffs,,f,2018-07-17 10:56:55.917363,2018-07-17 10:56:55.917363
+9,world.confed,Confederations Cup,,f,2018-07-17 10:56:55.918299,2018-07-17 10:56:55.918299
+10,euro,Euro / European Championship,,f,2018-07-17 10:56:55.919213,2018-07-17 10:56:55.919213
+11,euro.quali,Euro Quali,,f,2018-07-17 10:56:55.920226,2018-07-17 10:56:55.920226
+12,southamerica,Copa América,,f,2018-07-17 10:56:55.921105,2018-07-17 10:56:55.921105
+13,northamerica,Gold Cup / Copa de Oro,,f,2018-07-17 10:56:55.921984,2018-07-17 10:56:55.921984
+14,asia,Asian Cup,,f,2018-07-17 10:56:55.922923,2018-07-17 10:56:55.922923
+15,africa,Africa Cup of Nations / Coupe d'Afrique des Nations,,f,2018-07-17 10:56:55.923837,2018-07-17 10:56:55.923837
+16,paficic,South Pacific Nations Cup,,f,2018-07-17 10:56:55.924941,2018-07-17 10:56:55.924941

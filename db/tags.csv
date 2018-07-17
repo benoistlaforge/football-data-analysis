@@ -1,0 +1,13 @@
+id,key,slug,name,grade,parent_id,created_at,updated_at
+1,africa,africa,africa,1,,2018-07-17 10:56:50.890576,2018-07-17 10:56:50.890576
+2,antarctica,antarctica,antarctica,1,,2018-07-17 10:56:51.257643,2018-07-17 10:56:51.257643
+3,asia,asia,asia,1,,2018-07-17 10:56:51.264915,2018-07-17 10:56:51.264915
+4,caribbean,caribbean,caribbean,1,,2018-07-17 10:56:51.466899,2018-07-17 10:56:51.466899
+5,central america,central_america,central america,1,,2018-07-17 10:56:51.557801,2018-07-17 10:56:51.557801
+6,europe,europe,europe,1,,2018-07-17 10:56:51.612276,2018-07-17 10:56:51.612276
+7,supra,supra,supra,1,,2018-07-17 10:56:51.615213,2018-07-17 10:56:51.615213
+8,middle east,middle_east,middle east,1,,2018-07-17 10:56:51.880823,2018-07-17 10:56:51.880823
+9,north america,north_america,north america,1,,2018-07-17 10:56:51.983620,2018-07-17 10:56:51.983620
+10,pacific,pacific,pacific,1,,2018-07-17 10:56:52.000755,2018-07-17 10:56:52.000755
+11,south america,south_america,south america,1,,2018-07-17 10:56:52.096209,2018-07-17 10:56:52.096209
+12,territory,territory,territory,1,,2018-07-17 10:56:52.185598,2018-07-17 10:56:52.185598
