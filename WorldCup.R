@@ -1,19 +1,3 @@
-setwd("./db")
-
-countries <- read.csv2("teams.csv", sep = ',')
-games <- read.csv2("games.csv", sep=',')
-
-# Displays human readable games
-gamesId <- games$id
-team1HumanReadable <- countries$title[games$team1_id]
-team2HumanReadable <- countries$title[games$team2_id]
-
-humanReadable <- data.frame(gamesId, team1HumanReadable, team2HumanReadable, games$score1, games$score2, games$winner, games$play_at, games$play_at_v2, games$play_at_v3)
-humanReadable <- humanReadable[which(!is.na(humanReadable$games.winner)),]
-
-humanReadable$team1HumanReadable <- gsub("West Germany \\(-1989\\)", "Germany", humanReadable$team1HumanReadable)
-humanReadable$team2HumanReadable <- gsub("West Germany \\(-1989\\)", "Germany", humanReadable$team2HumanReadable)
-
 # Returns only years from a vector of dates
 getYearsFromDates <- function(dates) {
     return (substring(dates, 1, 4))
@@ -40,7 +24,7 @@ getGoalsFor <- function(countryGames, country) {
 }
 
 # Gets a list of all games played for the specified country
-getGamesFor <- function(country) {
+getGamesFor <- function(humanReadable, country) {
     return(humanReadable[which(humanReadable$team1HumanReadable == country | humanReadable$team2HumanReadable == country),])
 }
 
@@ -48,13 +32,10 @@ getNbGamesPlayed <- function(gamesPlayed) {
     return(length(gamesPlayed[,1]))
 }
 
-# A vector containing data names
-statsNames <- c("Country", "Appearances", "Number of games played", "Goals for", "Goals against", "Goals for per game", "Goals against per game", "Wins", "Draws", "Losses")
-
 # Returns stats for the specified country
-getStats <- function(country) {
+getStats <- function(humanReadable, country) {
     # Gets specific France data
-    gamesData <- getGamesFor(country)
+    gamesData <- getGamesFor(humanReadable, country)
     # Gets appearances
     appearances <- getNbAttendances(gamesData)
     # Gets number of games played
@@ -75,6 +56,8 @@ getStats <- function(country) {
     goalsPerGame <- round(goals / nbGamesPlayed, 2)
     # Builds a data frame containing all stats
     stats <- data.frame(country, appearances, nbGamesPlayed, goals[1], goals[2], goalsPerGame[1], goalsPerGame[2], wins, draws, losses)
+    # A vector containing data names
+    statsNames <- c("Country", "Appearances", "Number of games played", "Goals for", "Goals against", "Goals for per game", "Goals against per game", "Wins", "Draws", "Losses")
     names(stats) <- statsNames
     
     return(stats)
@@ -84,12 +67,4 @@ getStats <- function(country) {
 getAllTimeParticipants <- function(games) {
     data <- sort(unique(c(as.character(games$team1HumanReadable), as.character(games$team2HumanReadable))))
     return(data)
-}
-
-allParticipants <- getAllTimeParticipants(humanReadable)
-
-stats <- data.frame()
-
-for (i in 1:length(allParticipants)) {
-    stats <- rbind(stats, getStats(allParticipants[i]))
 }
