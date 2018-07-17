@@ -10,55 +10,7 @@ source("WorldCup.R")
 # France
 
 ```{r}
-country <- "France"
 
-statsFr <- getStats(country)
-```
-
-#### Appearances: `r I(statsFr$Appearances)`
-#### Number of games played: `r I(statsFr$`Number of games played`)`
-#### Goals for: `r I(statsFr$`Goals for`)`
-#### Goals for/game: `r I(statsFr`Goals for per game`)`
-#### Goals against: `r I(statsFr`Goals against`)`
-#### Goals against/game: `r I(statsFr`Goals against per game`)`
-
-# Brazil
-
-```{r}
-country <- "Brazil"
-
-statsBr <- getStats(country)
-```
-
-#### Number of games played: `r I(statsBr[1,2])`
-#### Goals for: `r I(statsBr[1,3])`
-#### Goals for/game: `r I(statsBr[1,5])`
-#### Goals against: `r I(statsBr[1,4])`
-#### Goals against/game: `r I(statsBr[1,6])`
-
-# Germany / West Germany
-
-```{r}
-country <- "West Germany (-1989)"
-
-gamesDataWg <- getGamesFor(country)
-
-# Gets goals for
-goals <- getGoalsFor(gamesDataWg, country)
-
-
-country <- "Germany"
-
-gamesData <- getGamesFor(country)
-
-print(paste("Games played: ", length(gamesData[,1]) + length(gamesDataWg[,1])))
-
-# Gets goals for
-goals <- goals + getGoalsFor(gamesData, country)
-
-print(paste("Goals for: ", goals[1]))
-print(paste("Goals against: ", goals[2]))
-
-print(goals)
+print(stats[order(-stats$`Number of games played`),])
 
 ```

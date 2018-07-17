@@ -11,6 +11,9 @@ team2HumanReadable <- countries$title[games$team2_id]
 humanReadable <- data.frame(gamesId, team1HumanReadable, team2HumanReadable, games$score1, games$score2, games$winner, games$play_at, games$play_at_v2, games$play_at_v3)
 humanReadable <- humanReadable[which(!is.na(humanReadable$games.winner)),]
 
+humanReadable$team1HumanReadable <- gsub("West Germany \\(-1989\\)", "Germany", humanReadable$team1HumanReadable)
+humanReadable$team2HumanReadable <- gsub("West Germany \\(-1989\\)", "Germany", humanReadable$team2HumanReadable)
+
 # Returns only years from a vector of dates
 getYearsFromDates <- function(dates) {
     return (substring(dates, 1, 4))
