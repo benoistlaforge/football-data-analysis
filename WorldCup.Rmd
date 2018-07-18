@@ -39,10 +39,108 @@ for (i in 1:length(allParticipants)) {
 ```
 
 
-# France
+# World Cup tournaments stats
+
+## Appearances
 
 ```{r}
 
-print(stats[order(-stats$`Number of games played`),])
+top10Appearances <- stats[head(order(-stats$Appearances), 10),]
+
+appearances <- top10Appearances$Appearances
+names(appearances) <- top10Appearances$Country
+barplot(appearances, las = 2)
+
+```
+
+## Games played
+
+```{r}
+
+top10GamesPlayed <- stats[head(order(-stats$`Number of games played`), 10),]
+
+gamesPlayed <- top10GamesPlayed$`Number of games played`
+names(gamesPlayed) <- top10GamesPlayed$Country
+barplot(gamesPlayed, las = 2)
+
+```
+
+## Wins
+
+```{r}
+
+top10Wins <- stats[head(order(-stats$Wins), 10),]
+
+wins <- top10Wins$Wins
+names(wins) <- top10Wins$Country
+barplot(wins, las = 2)
+
+```
+
+# Draws
+
+```{r}
+
+top10Draws <- stats[head(order(-stats$Draws), 10),]
+
+draws <- top10Draws$Draws
+names(draws) <- top10Draws$Country
+barplot(draws, las = 2)
+
+```
+
+# Losses
+
+```{r}
+
+top10Losses <- stats[head(order(-stats$Losses), 10),]
+
+losses <- top10Losses$Losses
+names(losses) <- top10Losses$Country
+barplot(losses, las = 2)
+
+```
+## Wins per attendance
+
+```{r}
+
+winRate <- stats
+winRate$Wins <- round(winRate$Wins/winRate$Appearances, 2)
+
+top10WinRate <- winRate[head(order(-winRate$Wins), 10),]
+
+winRates <- top10WinRate$Wins
+names(winRates) <- top10WinRate$Country
+barplot(winRates, las = 2)
+
+```
+
+# Draws per attendance
+
+```{r}
+
+drawRate <- stats
+drawRate$Draws <- round(drawRate$Draws/drawRate$Appearances, 2)
+
+top10drawRate <- drawRate[head(order(-drawRate$Draws), 10),]
+
+drawRates <- top10drawRate$Draws
+names(drawRates) <- top10drawRate$Country
+barplot(drawRates, las = 2)
+
+```
+
+# Losses per attendance
+
+```{r}
+
+lossRate <- stats
+lossRate$Losses <- round(lossRate$Losses/lossRate$Appearances, 2)
+
+top10LossRate <- lossRate[head(order(-lossRate$Losses), 10),]
+
+lossRates <- top10LossRate$Losses
+names(lossRates) <- top10LossRate$Country
+barplot(lossRates, las = 2)
 
 ```
