@@ -12,12 +12,16 @@ setwd("./db")
 countries <- read.csv2("teams.csv", sep = ',')
 games <- read.csv2("games.csv", sep=',')
 
+# Adds a column containing World Cup edition (year)
+games <- cbind(games, getYearsFromDates(games$play_at))
+colnames(games)[length(games)] <- "year"
+
 # Creates a human readabe data set
 gamesId <- games$id
 team1HumanReadable <- countries$title[games$team1_id]
 team2HumanReadable <- countries$title[games$team2_id]
 
-humanReadable <- data.frame(gamesId, team1HumanReadable, team2HumanReadable, games$score1, games$score2, games$winner, games$play_at, games$play_at_v2, games$play_at_v3)
+humanReadable <- data.frame(gamesId, team1HumanReadable, team2HumanReadable, games$score1, games$score2, games$winner, games$play_at, games$year)
 humanReadable <- humanReadable[which(!is.na(humanReadable$games.winner)),]
 
 # Come on, West Germany should be Germany!
@@ -137,7 +141,7 @@ barplot(drawRates, las = 2)
 lossRate <- stats
 lossRate$Losses <- round(lossRate$Losses/lossRate$Appearances, 2)
 
-top10LossRate <- lossRate[head(order(-lossRate$Losses), 10),]
+top10LossRate <- lossRate[head(order(lossRate$Losses), 10),]
 
 lossRates <- top10LossRate$Losses
 names(lossRates) <- top10LossRate$Country
