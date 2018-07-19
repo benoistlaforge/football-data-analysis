@@ -68,3 +68,8 @@ getAllTimeParticipants <- function(games) {
     data <- sort(unique(c(as.character(games$team1HumanReadable), as.character(games$team2HumanReadable))))
     return(data)
 }
+
+# Returns all games for a specific World Cup Edition
+getGamesPerYear <- function(games, year) {
+    return (games[which(games$games.year == year),])
+}

@@ -152,3 +152,17 @@ names(lossRates) <- top10LossRate$Country
 barplot(lossRates, las = 2)
 
 ```
+
+# All finals
+
+```{r}
+worldCupEditions <- unique(humanReadable$games.year)
+
+finals <- data.frame()
+
+for (year in worldCupEditions) {
+    finals <- rbind(finals, tail(getGamesPerYear(humanReadable, year), 1))
+}
+
+print(finals)
+```
