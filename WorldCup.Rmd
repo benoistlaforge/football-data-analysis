@@ -28,6 +28,10 @@ humanReadable <- humanReadable[which(!is.na(humanReadable$games.winner)),]
 humanReadable$team1HumanReadable <- gsub("West Germany \\(-1989\\)", "Germany", humanReadable$team1HumanReadable)
 humanReadable$team2HumanReadable <- gsub("West Germany \\(-1989\\)", "Germany", humanReadable$team2HumanReadable)
 
+# Soviet Union -> Russia
+humanReadable$team1HumanReadable <- gsub("Soviet Union \\(-1991\\)", "Russia", humanReadable$team1HumanReadable)
+humanReadable$team2HumanReadable <- gsub("Soviet Union \\(-1991\\)", "Russia", humanReadable$team2HumanReadable)
+
 # Let's create stats for all countries which have ever participated to the World Cup
 
 # First let's get al participants
