@@ -21,7 +21,7 @@ gamesId <- games$id
 team1HumanReadable <- countries$title[games$team1_id]
 team2HumanReadable <- countries$title[games$team2_id]
 
-humanReadable <- data.frame(gamesId, team1HumanReadable, team2HumanReadable, games$score1, games$score2, games$winner, games$play_at, games$year)
+humanReadable <- data.frame(gamesId, team1HumanReadable, team2HumanReadable, games$score1, games$score2, games$score1et, games$score2et, games$score1p, games$score2p, games$winner, games$play_at, games$year)
 humanReadable <- humanReadable[which(!is.na(humanReadable$games.winner)),]
 
 # Come on, West Germany should be Germany!
