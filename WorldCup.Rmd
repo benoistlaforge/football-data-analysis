@@ -155,6 +155,7 @@ barplot(lossRates, las = 2)
 
 # All finals
 
+## Games
 ```{r}
 worldCupEditions <- unique(humanReadable$games.year)
 
@@ -165,4 +166,14 @@ for (year in worldCupEditions) {
 }
 
 print(finals)
+```
+
+## Final participants
+
+```{r}
+
+finalists <- unique(c(finals$team1HumanReadable, finals$team2HumanReadable))
+
+print(finalists)
+
 ```
