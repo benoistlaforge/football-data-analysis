@@ -168,12 +168,20 @@ for (year in worldCupEditions) {
 print(finals)
 ```
 
-## Final participants
+## Finalists
 
 ```{r}
 
-finalists <- unique(c(finals$team1HumanReadable, finals$team2HumanReadable))
+finalists <- c(finals$team1HumanReadable, finals$team2HumanReadable)
 
-print(finalists)
+barplot(sort(table(finalists), decreasing = TRUE), las = 2)
 
+```
+
+## Winner
+
+```{r}
+winners <- c(finals[which(finals$games.winner == 1),]$team1HumanReadable, finals[which(finals$games.winner == 2),]$team2HumanReadable)
+
+barplot(sort(table(winners), decreasing = TRUE), las = 2)
 ```
