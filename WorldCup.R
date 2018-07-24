@@ -13,12 +13,16 @@ getGoalsFor <- function(countryGames, country) {
     homeGames <- countryGames[countryGames$team1HumanReadable == country, ]
     homeGoalsFor <- sum(homeGames$games.score1, na.rm = TRUE)
     homeGoalsAgainst <- sum(homeGames$games.score2, na.rm = TRUE)
+    homeGoalsEt1For <- sum(homeGames$games.score1et - homeGames$games.score1, na.rm = TRUE)
+    homeGoalsEt1Against <- sum(homeGames$games.score2et - homeGames$games.score2, na.rm = TRUE)
     awayGames <- countryGames[countryGames$team2HumanReadable == country, ]
     awayGoalsFor <- sum(awayGames$games.score2, na.rm = TRUE)
     awayGoalsAgainst <- sum(awayGames$games.score1, na.rm = TRUE)
+    awayGoalsEt1For <- sum(awayGames$games.score2et - awayGames$games.score2, na.rm = TRUE)
+    awayGoalsEt1Against <- sum(awayGames$games.score1et - awayGames$games.score1, na.rm = TRUE)
     
-    goalsFor <- awayGoalsFor + homeGoalsFor
-    goalsAgainst <- awayGoalsAgainst + homeGoalsAgainst
+    goalsFor <- awayGoalsFor + homeGoalsFor + awayGoalsEt1For + homeGoalsEt1For
+    goalsAgainst <- awayGoalsAgainst + homeGoalsAgainst + awayGoalsEt1Against + homeGoalsEt1Against
     
     return(c(goalsFor, goalsAgainst))
 }

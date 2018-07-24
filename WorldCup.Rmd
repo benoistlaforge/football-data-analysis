@@ -178,7 +178,7 @@ barplot(sort(table(finalists), decreasing = TRUE), las = 2)
 
 ```
 
-## Winner
+## Winners
 
 ```{r}
 winners <- c(finals[which(finals$games.winner == 1),]$team1HumanReadable, finals[which(finals$games.winner == 2),]$team2HumanReadable)
