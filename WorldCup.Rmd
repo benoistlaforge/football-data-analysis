@@ -185,3 +185,23 @@ winners <- c(finals[which(finals$games.winner == 1),]$team1HumanReadable, finals
 
 barplot(sort(table(winners), decreasing = TRUE), las = 2)
 ```
+
+### Stats year per year
+
+```{r echo=FALSE}
+allWorldCupEditions <- unique(humanReadable$games.year)
+
+statsWinnersPerYear <- data.frame()
+for (country in unique(winners)) {
+    # For each country, get games
+    gameForCountry <- getGamesFor(humanReadable, country)
+    # For each year, get stats
+    for (year in allWorldCupEditions) {
+        unique(gameForCountry$games.year)
+        stats <- getStats(getGamesPerYear(gameForCountry, year), country)
+        stats <- cbind(stats, year)
+        statsWinnersPerYear <- rbind(statsWinnersPerYear, stats)
+    }
+}
+
+```

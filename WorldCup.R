@@ -57,7 +57,11 @@ getStats <- function(humanReadable, country) {
     # Gets goals scored in country's games
     goals <- getGoalsFor(gamesData, country)
     nbGamesPlayedFrance <- nbGamesPlayed
-    goalsPerGame <- round(goals / nbGamesPlayed, 2)
+    if (nbGamesPlayed > 0) {
+        goalsPerGame <- round(goals / nbGamesPlayed, 2)
+    } else {
+        goalsPerGame <- c(0,0)
+    }
     # Builds a data frame containing all stats
     stats <- data.frame(country, appearances, nbGamesPlayed, goals[1], goals[2], goalsPerGame[1], goalsPerGame[2], wins, draws, losses)
     # A vector containing data names
