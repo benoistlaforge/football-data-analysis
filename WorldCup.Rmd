@@ -44,6 +44,9 @@ for (i in 1:length(allParticipants)) {
     stats <- rbind(stats, getStats(humanReadable, allParticipants[i]))
 }
 
+# A color palette for graphs
+palette <- c("red", "green", "blue", "yellow", "cyan", "magenta", "orange", "purple", "brown", "violet", "chocolate", "darkorange", "coral", "darkgray", "navy")
+
 ```
 
 
@@ -57,7 +60,7 @@ top10Appearances <- stats[head(order(-stats$Appearances), 10),]
 
 appearances <- top10Appearances$Appearances
 names(appearances) <- top10Appearances$Country
-barplot(appearances, las = 2)
+barplot(appearances, las = 2, col = palette)
 
 ```
 
@@ -69,7 +72,7 @@ top10GamesPlayed <- stats[head(order(-stats$`Number of games played`), 10),]
 
 gamesPlayed <- top10GamesPlayed$`Number of games played`
 names(gamesPlayed) <- top10GamesPlayed$Country
-barplot(gamesPlayed, las = 2)
+barplot(gamesPlayed, las = 2, col = palette)
 
 ```
 
@@ -81,7 +84,7 @@ top10Wins <- stats[head(order(-stats$Wins), 10),]
 
 wins <- top10Wins$Wins
 names(wins) <- top10Wins$Country
-barplot(wins, las = 2)
+barplot(wins, las = 2, col = palette)
 
 ```
 
@@ -93,7 +96,7 @@ top10Draws <- stats[head(order(-stats$Draws), 10),]
 
 draws <- top10Draws$Draws
 names(draws) <- top10Draws$Country
-barplot(draws, las = 2)
+barplot(draws, las = 2, col = palette)
 
 ```
 
@@ -105,7 +108,7 @@ top10Losses <- stats[head(order(-stats$Losses), 10),]
 
 losses <- top10Losses$Losses
 names(losses) <- top10Losses$Country
-barplot(losses, las = 2)
+barplot(losses, las = 2, col = palette)
 
 ```
 ## Wins per attendance
@@ -119,7 +122,7 @@ top10WinRate <- winRate[head(order(-winRate$Wins), 10),]
 
 winRates <- top10WinRate$Wins
 names(winRates) <- top10WinRate$Country
-barplot(winRates, las = 2)
+barplot(winRates, las = 2, col = palette)
 
 ```
 
@@ -134,7 +137,7 @@ top10drawRate <- drawRate[head(order(-drawRate$Draws), 10),]
 
 drawRates <- top10drawRate$Draws
 names(drawRates) <- top10drawRate$Country
-barplot(drawRates, las = 2)
+barplot(drawRates, las = 2, col = palette)
 
 ```
 
@@ -149,7 +152,7 @@ top10LossRate <- lossRate[head(order(lossRate$Losses), 10),]
 
 lossRates <- top10LossRate$Losses
 names(lossRates) <- top10LossRate$Country
-barplot(lossRates, las = 2)
+barplot(lossRates, las = 2, col = palette)
 
 ```
 
@@ -174,7 +177,7 @@ print(finals)
 
 finalists <- c(finals$team1HumanReadable, finals$team2HumanReadable)
 
-barplot(sort(table(finalists), decreasing = TRUE), las = 2)
+barplot(sort(table(finalists), decreasing = TRUE), las = 2, col = palette)
 
 ```
 
@@ -183,7 +186,7 @@ barplot(sort(table(finalists), decreasing = TRUE), las = 2)
 ```{r}
 winners <- c(finals[which(finals$games.winner == 1),]$team1HumanReadable, finals[which(finals$games.winner == 2),]$team2HumanReadable)
 
-barplot(sort(table(winners), decreasing = TRUE), las = 2)
+barplot(sort(table(winners), decreasing = TRUE), las = 2, col = palette)
 ```
 
 ### Stats year per year
